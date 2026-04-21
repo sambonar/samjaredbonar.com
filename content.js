@@ -226,7 +226,7 @@ window.SAM = {
     {
       title: "Governing the Commons",
       author: "Elinor Ostrom",
-      note: "The first woman to win the Nobel Prize in Economics — in 2009! She showed that the Tragedy of the Commons is a myth and that Garrett Hardin ("the Tragedy of the Commons") was full of shit. She laid out the design principles that make commons successful.",
+      note: "The first woman to win the Nobel Prize in Economics — in 2009! She showed that the Tragedy of the Commons is a myth and that Garrett Hardin (\"the Tragedy of the Commons\") was full of shit. She laid out the design principles that make commons successful.",
     },
     {
       title: "Emergent Strategy",
