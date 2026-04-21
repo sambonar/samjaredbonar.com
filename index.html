@@ -46,7 +46,8 @@
         `;
       }, []);
 
-      return window.CardCatalog ? <window.CardCatalog /> : null;
+      const CC = window.CardCatalog;
+      return CC ? <CC /> : null;
     }
 
     const root = ReactDOM.createRoot(document.getElementById("root"));
