@@ -1,0 +1,253 @@
+// Direction 1 — "The Card Catalog"
+function CardCatalog() {
+  const S = window.SAM;
+  return (
+    <div className="dir-cardcatalog" data-screen-label="Direction 1 — Card Catalog">
+      <div className="page">
+        <header className="cc-mast">
+          <div>
+            <div className="cc-sub">Sam&nbsp;·&nbsp;Washington&nbsp;DC&nbsp;·&nbsp;est.&nbsp;a&nbsp;while&nbsp;ago</div>
+            <h1>Sam Bonar</h1>
+          </div>
+          <span className="cc-logo" aria-hidden="true">
+            <img src="assets/redelicious-logo.svg?v=2" alt="" />
+          </span>
+        </header>
+
+        <p className="cc-intro">
+          A journey toward <em>delicious democracy</em>. I do comedy, but I don't tell jokes — I bring the joy and intimacy of improvisation, infinite play, and intentionally-designed games into real-world advocacy.
+        </p>
+
+        <nav className="cc-toc">
+          {S.toc.map(t => (
+            <a key={t.id} href={"#" + t.id} className="cc-card">
+              <div className="cc-label">{t.label}</div>
+              <div className="cc-gloss">{t.gloss}</div>
+            </a>
+          ))}
+        </nav>
+
+        <section id="about" className="cc-section">
+          <CCFerment />
+          <div className="cc-section-header"><span className="num">01</span><h2>About</h2></div>
+          {S.about.map((p,i) => <p key={i}>{p}</p>)}
+        </section>
+
+        <section id="now" className="cc-section">
+          <div className="cc-section-header"><span className="num">02</span><h2>Now</h2></div>
+          <p style={{color:"var(--ink-soft)",fontStyle:"italic",marginBottom:18}}>Updated this season. What I'm actively inside of.</p>
+          <ol className="cc-now">{S.now.map((n,i) => <li key={i}>{n}</li>)}</ol>
+        </section>
+
+        <section id="projects" className="cc-section">
+          <div className="cc-section-header"><span className="num">03</span><h2>Current projects</h2></div>
+          {S.projects.map(p => (
+            <div key={p.name} className="cc-entry">
+              <h3>{p.url ? <a href={p.url}>{p.name}</a> : p.name}</h3>
+              <span className="cc-kind">{p.kind}</span>
+              <ul>{p.bullets.map((b,i) => <li key={i}>{b}</li>)}</ul>
+              {p.links && (
+                <div className="cc-linkrow">
+                  {p.links.map((l,i) => <a key={i} href={l.url}>↗ {l.label}</a>)}
+                </div>
+              )}
+            </div>
+          ))}
+        </section>
+
+        <section id="wins" className="cc-section">
+          <div className="cc-section-header"><span className="num">04</span><h2>Measurable wins</h2></div>
+          <p style={{color:"var(--ink-soft)",fontStyle:"italic",marginBottom:18}}>Since people love concrete wins, here they are.</p>
+          {S.wins.map(w => (
+            <div key={w.name} className="cc-entry">
+              <h3>{w.url ? <a href={w.url}>{w.name}</a> : w.name}</h3>
+              <ul>{w.bullets.map((b,i) => <li key={i}>{b}</li>)}</ul>
+            </div>
+          ))}
+        </section>
+
+        <section id="journey" className="cc-section">
+          <div className="cc-section-header"><span className="num">05</span><h2>Previous journey</h2></div>
+          <p style={{color:"var(--ink-soft)",fontStyle:"italic",marginBottom:18}}>Some failures, some stops on the way to successes, some I'd rather not list.</p>
+          {S.journey.map(j => (
+            <div key={j.name} className="cc-entry">
+              <h3>{j.name}</h3>
+              {j.body && j.body.map((b,i) => <p key={i}>{b}</p>)}
+              {j.links && (
+                <div className="cc-linkrow">
+                  {j.links.map((l,i) => <a key={i} href={l.url}>↗ {l.label}</a>)}
+                </div>
+              )}
+            </div>
+          ))}
+        </section>
+
+        <section id="future" className="cc-section">
+          <div className="cc-section-header"><span className="num">06</span><h2>Potential futures</h2></div>
+          <p style={{color:"var(--ink-soft)",fontStyle:"italic",marginBottom:18}}>Half-formed. Collaborators welcome.</p>
+          {S.future.map(f => (
+            <div key={f.name} className="cc-entry">
+              <h3>{f.name}</h3>
+              <p>{f.body}</p>
+            </div>
+          ))}
+        </section>
+
+        <section id="bookshelf" className="cc-section">
+          <div className="cc-section-header"><span className="num">07</span><h2>Bookshelf</h2></div>
+          <p style={{color:"var(--ink-soft)",fontStyle:"italic",marginBottom:18}}>Books and ideas that feed the work.</p>
+          <div className="cc-books">
+            {S.bookshelf.map(b => (
+              <div key={b.title} className="cc-book">
+                <div>
+                  <span className="cc-btitle">{b.url ? <a href={b.url}>{b.title}</a> : b.title}</span>
+                  <span className="cc-bauthor">{b.author}</span>
+                </div>
+                <div className="cc-bnote">{b.note}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="elsewhere" className="cc-section">
+          <div className="cc-section-header"><span className="num">08</span><h2>Elsewhere</h2></div>
+          <div className="cc-elsewhere">
+            {S.elsewhere.map(e => (
+              <a key={e.label} href={e.url}><span>{e.label}</span><span className="kind">{e.kind}</span></a>
+            ))}
+          </div>
+        </section>
+
+        <footer className="cc-foot">
+          <span>© Sam Bonar · hand-set on the indie web</span>
+          <span>samjaredbonar.com</span>
+        </footer>
+      </div>
+
+      <div className="cc-fern" title="psst — click" onClick={() => {
+        const el = document.createElement('div');
+        el.textContent = '🍄';
+        Object.assign(el.style, {position:'fixed',left: (Math.random()*window.innerWidth)+'px',top:(Math.random()*window.innerHeight)+'px',fontSize:'24px',pointerEvents:'none',transition:'all 2s',zIndex:1000});
+        document.body.appendChild(el);
+        requestAnimationFrame(()=>{ el.style.opacity='0'; el.style.transform='translateY(-60px) rotate(30deg)'; });
+        setTimeout(()=>el.remove(),2100);
+      }}>
+        {'{ ~ }  A quiet fern lives here.'}
+      </div>
+    </div>
+  );
+}
+window.CardCatalog = CardCatalog;
+
+/* ---------- Card Catalog Fermentation ----------
+   Ported from the Terminal direction, retoned for cream paper. */
+function CCFerment() {
+  const canvasRef = React.useRef(null);
+  const stateRef = React.useRef(null);
+  const [running, setRunning] = React.useState(true);
+  const [tick, setTick] = React.useState(0);
+
+  React.useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const COLS = 140, ROWS = 44;
+    canvas.width = COLS; canvas.height = ROWS;
+    const grid = new Uint8Array(COLS * ROWS);
+    for (let i = 0; i < 24; i++) grid[Math.floor(Math.random() * grid.length)] = 1;
+    for (let i = 0; i < 8; i++)  grid[Math.floor(Math.random() * grid.length)] = 3;
+    stateRef.current = { grid, COLS, ROWS };
+
+    const ctx = canvas.getContext("2d");
+    // 0 empty (paper), 1 yeast (terracotta), 2 bubble (soft amber), 3 mycelium (inky olive)
+    const palette = ["#f6f0fa", "#9a4a8c", "#c78acc", "#5a3a7a"];
+
+    let frame = 0, rafId;
+    const step = () => {
+      if (!running) { rafId = requestAnimationFrame(step); return; }
+      frame++;
+      if (frame % 4 === 0) {
+        const next = new Uint8Array(grid.length);
+        for (let y = 0; y < ROWS; y++) {
+          for (let x = 0; x < COLS; x++) {
+            const i = y*COLS + x;
+            const c = grid[i];
+            if (c === 1) {
+              next[i] = Math.random() < 0.995 ? 1 : 0;
+              if (Math.random() < 0.02 && y > 0) next[(y-1)*COLS + x] = 2;
+              if (Math.random() < 0.05) {
+                const nx = x + (Math.random()<.5?-1:1);
+                const ny = y + (Math.random()<.5?-1:1);
+                if (nx>=0&&nx<COLS&&ny>=0&&ny<ROWS && grid[ny*COLS+nx]===0) next[ny*COLS+nx] = 1;
+              }
+            } else if (c === 2) {
+              if (y > 0 && grid[(y-1)*COLS + x] === 0 && Math.random() < 0.7) next[(y-1)*COLS + x] = 2;
+              else if (Math.random() < 0.3) next[i] = 0;
+              else next[i] = 2;
+            } else if (c === 3) {
+              next[i] = 3;
+              if (Math.random() < 0.08) {
+                const nx = x + (Math.random()<.5?-1:1);
+                const ny = y + (Math.random()<.5?-1:1);
+                if (nx>=0&&nx<COLS&&ny>=0&&ny<ROWS && grid[ny*COLS+nx]===0) next[ny*COLS+nx] = 3;
+              }
+            }
+          }
+        }
+        grid.set(next);
+        setTick(t => t + 1);
+      }
+      const img = ctx.createImageData(COLS, ROWS);
+      for (let i = 0; i < grid.length; i++) {
+        const hex = palette[grid[i]];
+        img.data[i*4]   = parseInt(hex.slice(1,3),16);
+        img.data[i*4+1] = parseInt(hex.slice(3,5),16);
+        img.data[i*4+2] = parseInt(hex.slice(5,7),16);
+        img.data[i*4+3] = 255;
+      }
+      ctx.putImageData(img, 0, 0);
+      rafId = requestAnimationFrame(step);
+    };
+    rafId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(rafId);
+  }, [running]);
+
+  const handleClick = (e) => {
+    const canvas = canvasRef.current;
+    const rect = canvas.getBoundingClientRect();
+    const s = stateRef.current;
+    if (!s) return;
+    const x = Math.floor((e.clientX - rect.left) / rect.width * s.COLS);
+    const y = Math.floor((e.clientY - rect.top) / rect.height * s.ROWS);
+    for (let dy = -2; dy <= 2; dy++) {
+      for (let dx = -2; dx <= 2; dx++) {
+        const nx = x+dx, ny = y+dy;
+        if (nx>=0&&nx<s.COLS&&ny>=0&&ny<s.ROWS && Math.random()<0.5) {
+          s.grid[ny*s.COLS+nx] = Math.random()<0.15 ? 3 : 1;
+        }
+      }
+    }
+  };
+
+  return (
+    <div className="cc-ferment">
+      <div className="cc-ferment-head">
+        <span className="cc-ferment-title"><em>fermentation</em>.sim — click to seed yeast &amp; mycelium</span>
+        <span className="cc-ferment-tick">tick {String(tick).padStart(4,"0")}</span>
+      </div>
+      <canvas ref={canvasRef} className="cc-ferment-canvas" onClick={handleClick}/>
+      <div className="cc-ferment-ctrl">
+        <button onClick={() => setRunning(r => !r)}>{running ? "pause" : "resume"}</button>
+        <button onClick={() => {
+          const s = stateRef.current;
+          if (s) {
+            s.grid.fill(0);
+            for (let i=0;i<24;i++) s.grid[Math.floor(Math.random()*s.grid.length)]=1;
+            for (let i=0;i<8;i++)  s.grid[Math.floor(Math.random()*s.grid.length)]=3;
+          }
+        }}>reset</button>
+        <span>A small cellular automaton, fermenting slowly while you read. In honor of Radical Mycology &amp; delicious democracy.</span>
+      </div>
+    </div>
+  );
+}
+window.CCFerment = CCFerment;
