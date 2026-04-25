@@ -17,7 +17,7 @@
   <style>
     :root { color-scheme: light; }
     html, body { margin: 0; padding: 0; }
-    body { background: #f3ecdc; }
+    body { background: #e5daf5; }
     @media print { * { color: #000; background: #fff; } }
   </style>
 </head>
@@ -147,8 +147,8 @@
         <div className="dir-cardcatalog">
           <div className="page">
             <header className="cc-mast">
-              <div>
-                <div className="cc-sub">Sam&nbsp;·&nbsp;Washington&nbsp;DC&nbsp;·&nbsp;est.&nbsp;a&nbsp;while&nbsp;ago</div>
+              <div className="cc-mast-left">
+                <img className="cc-headshot" src="assets/sam-headshot.jpg" alt="Sam Bonar" />
                 <h1>Sam Bonar</h1>
               </div>
               <span className="cc-logo" aria-hidden="true">
@@ -157,7 +157,7 @@
             </header>
 
             <p className="cc-intro">
-              A journey toward <em>delicious democracy</em>. I do comedy, but I don't tell jokes — I bring the joy and intimacy of improvisation, infinite play, and intentionally-designed games into real-world advocacy.
+              A journey toward <a href="http://deliciousdemocracy.com"><em>delicious democracy</em></a>. I do comedy, but I don't tell jokes — I bring the joy and curiosity of improvisation, infinite play, and intentionally-designed games into real-world advocacy, grassroots organizing, and policy advocacy.
             </p>
 
             <nav className="cc-toc">
@@ -174,6 +174,10 @@
               <div className="cc-section-header"><span className="num">01</span><h2>About</h2></div>
               {S.about.map((p,i) => <p key={i}>{p}</p>)}
             </section>
+
+            <div className="cc-texture-break">
+              <img src="assets/texture-1.jpg" alt="" />
+            </div>
 
             <section id="now" className="cc-section">
               <div className="cc-section-header"><span className="num">02</span><h2>Now</h2></div>
@@ -196,6 +200,10 @@
                 </div>
               ))}
             </section>
+
+            <div className="cc-texture-break">
+              <img src="assets/texture-2.jpg" alt="" />
+            </div>
 
             <section id="wins" className="cc-section">
               <div className="cc-section-header"><span className="num">04</span><h2>Measurable wins</h2></div>
@@ -223,6 +231,10 @@
                 </div>
               ))}
             </section>
+
+            <div className="cc-texture-break">
+              <img src="assets/texture-3.jpg" alt="" />
+            </div>
 
             <section id="future" className="cc-section">
               <div className="cc-section-header"><span className="num">06</span><h2>Potential futures</h2></div>

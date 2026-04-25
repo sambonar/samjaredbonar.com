@@ -2,8 +2,8 @@
    Cream paper, serif body, typewriter accents. Table of contents = catalog cards. */
 
 .dir-cardcatalog {
-  --paper: #efeaf3;
-  --paper-2: #e4dced;
+  --paper: #ede6f8;
+  --paper-2: #e0d4f0;
   --ink: #1d1a22;
   --ink-soft: #625a6e;
   --rule: #c4bad0;
@@ -19,8 +19,8 @@
   min-height: 100vh;
   position: relative;
   background-image:
-    radial-gradient(circle at 22% 18%, rgba(90,70,120,0.04) 0, transparent 40%),
-    radial-gradient(circle at 78% 82%, rgba(60,40,90,0.05) 0, transparent 45%);
+    radial-gradient(circle at 22% 18%, rgba(90,70,120,0.07) 0, transparent 40%),
+    radial-gradient(circle at 78% 82%, rgba(60,40,90,0.09) 0, transparent 45%);
 }
 .dir-cardcatalog .mono { font-family: "JetBrains Mono","IBM Plex Mono",ui-monospace,Menlo,monospace; }
 
@@ -34,25 +34,32 @@
 .cc-mast {
   display: grid;
   grid-template-columns: 1fr auto;
-  align-items: end;
+  align-items: center;
   padding-bottom: 18px;
   border-bottom: 1px solid var(--rule);
   margin-bottom: 44px;
+}
+.cc-mast-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.cc-headshot {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  flex-shrink: 0;
+  border: 2px solid var(--rule);
 }
 .cc-mast h1 {
   font-family: "Cormorant Garamond", serif;
   font-size: 52px;
   font-weight: 500;
   font-style: italic;
-  margin: 0 0 4px;
+  margin: 0;
   letter-spacing: -0.01em;
-}
-.cc-mast .cc-sub {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--ink-soft);
 }
 .cc-mast .cc-logo {
   display: block;
@@ -91,6 +98,26 @@
   font-weight: 400;
 }
 .cc-intro em { font-style: italic; color: var(--accent); }
+.cc-intro a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.cc-intro a:hover { color: var(--stamp); }
+.cc-intro a em { color: inherit; }
+
+/* texture break images between sections */
+.cc-texture-break {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  margin: -24px 0 72px;
+  background-color: var(--paper-2);
+  border-radius: 2px;
+}
+.cc-texture-break img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
 
 /* Table of contents — styled as catalog cards */
 .cc-toc {
@@ -336,6 +363,8 @@
   .cc-elsewhere { grid-template-columns: 1fr; }
   .cc-book { grid-template-columns: 1fr; gap: 6px; }
   .cc-section-header h2 { font-size: 32px; }
+  .cc-headshot { width: 60px; height: 60px; }
+  .cc-texture-break { height: 140px; }
 }
 
 /* ---------- Card Catalog Fermentation ---------- */
