@@ -119,6 +119,19 @@
   display: block;
 }
 
+/* full-size image at bottom — shows the whole image, no cropping */
+.cc-texture-full {
+  width: 100%;
+  margin: 64px 0 0;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.cc-texture-full img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* Table of contents — styled as catalog cards */
 .cc-toc {
   display: grid;
